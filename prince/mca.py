@@ -23,7 +23,7 @@ class MCA(ca.CA):
         # One-hot encode the data
         one_hot = pd.get_dummies(X)
         one_hot = one_hot.drop(one_hot.std()[(one_hot.std() == 0)].index, axis=1)
-        
+        print('got here')
         # Apply CA to the indicator matrix
         super().fit(one_hot)
 
