@@ -17,18 +17,15 @@ class MCA(ca.CA):
 
         if not isinstance(X, pd.DataFrame):
             X = pd.DataFrame(X)
-        print('1: ', X.shape)
         n_initial_columns = X.shape[1]
 
         # One-hot encode the data
         one_hot = pd.get_dummies(X)
-        print('2: ', one_hot.shape)
         # Apply CA to the indicator matrix
         super().fit(one_hot)
 
         # Compute the total inertia
         n_new_columns = one_hot.shape[1]
-        print('3: ', one_hot.shape)
         self.total_inertia_ = (n_new_columns - n_initial_columns) / n_initial_columns
 
         return self
